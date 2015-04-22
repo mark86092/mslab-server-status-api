@@ -1,7 +1,7 @@
 <?php
 require_once('config.php');
 function my_autoloader($class) {
-    include('libs/' . $class . '.class.php');
+    include 'libs/' . str_replace('\\', '/', $class) . '.php';
 }
 spl_autoload_register('my_autoloader');
 
