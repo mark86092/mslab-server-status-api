@@ -29,4 +29,11 @@ $route->get('#^/$#', function() {
 
 });
 
+$route->get('#^/terminal$#', function() {
+	require('terminal.php');
+	$conn  = DB::get();
+	$data = \Models\Resources::all($conn);
+	print_in_terminal($data);
+});
+
 $route->parse();
