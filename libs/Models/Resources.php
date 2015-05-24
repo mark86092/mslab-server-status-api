@@ -16,7 +16,7 @@ class Resources {
 				'load5'=> (double)$load5,
 				'load15'=> (double)$load15,
 				'used_memory' => (int)$used_memory,
-				'last_updated'=> date_create_from_format('Y-m-d H:i:s', $last_updated)->format('c')
+				'last_updated'=> \DateTime::createFromFormat('Y-m-d H:i:s', $last_updated)->format(\DateTime::ISO8601)
 			);
 		}
 		$stmt->close();

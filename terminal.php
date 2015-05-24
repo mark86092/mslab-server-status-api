@@ -5,7 +5,7 @@ function print_in_terminal($data) {
 
 	printf("\x1b[32;1m%10s %8s %8s %8s %21s\x1b[39;22m\n", "Host", "Load1", "Load5", "Load15", "Memory(Used/Total)");
 	foreach ($data as $d) {
-		$a = DateTime::createFromFormat('Y-m-d H:i:s', $d['last_updated']);
+		$a = DateTime::createFromFormat(DateTime::ISO8601, $d['last_updated']);
 		if ($threshold > $a ) {
 			printf("\x1b[30;1m");
 			printf("%10s ", $d['host']);

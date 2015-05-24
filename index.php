@@ -40,7 +40,14 @@ $route->post('#^/host/(.*)#', function($matches) {
 		$load15 = $_POST['load15'];
 		$used_memory = $_POST['used_memory'];
 		\Models\Resources::update(DB::get(), $host, $load1, $load5, $load15, $used_memory);
+		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Methods: *");
+		header("Content-Type: application/json");
+		echo json_encode(array('success' => 'success'));
 	} catch (Exception $e) {
+		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Methods: *");
+		header("Content-Type: application/json");
 		echo json_encode(array('error' => $e->getMessage()));
 	}
 });
