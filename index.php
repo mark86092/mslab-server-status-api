@@ -26,7 +26,23 @@ $route->get('#^/$#', function() {
 	} catch (Exception $e) {
 		http_response_code(500);
 	}
+});
 
+$route->post('#^/host/(.*)#', function($matches) {
+	try {
+		$host = $matches[1];
+		$token = $_POST['token'];
+		if ($token != TOKEN) {
+			throw new Exception("not authorized");
+		}
+		$load1 = $_POST['load1'];
+		$load5 = $_POST['load5'];
+		$load15 = $_POST['load15'];
+		$used_memory = $_POST['used_memory'];
+		\Models\Resources::update(DB::get(), $host, $load1, $load5, $load15, $used_memory);
+	} catch (Exception $e) {
+		echo json_encode(array('error' => $e->getMessage()));
+	}
 });
 
 $route->get('#^/terminal$#', function() {

@@ -22,4 +22,13 @@ class Resources {
 		$stmt->close();
 		return $data;
 	}
+	public static function update($conn, $host, $load1, $load5, $load15, $used_memory) {
+		if (!($stmt = $conn->prepare("UPDATE `resources` SET `load1` = ?, `load5` = ?, `load15` = ?, `used_memory` = ?, `last_updated` = NOW() WHERE `host` = ?"))) {
+			throw new Exception("stmt error");
+		}
+		$stmt->bind_param("dddis", $load1, $load5, $load15, $used_memory, $host);
+		if (!($stmt->execute())) {
+			throw new Exception("execute error");
+		}
+	}
 }
