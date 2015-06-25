@@ -1,7 +1,7 @@
 <?php namespace Models;
 class Resources {
 	public static function all($conn) {
-		if (!($stmt = $conn->prepare("SELECT `host`, `cpu_cores`, `memory`, `load1`, `load5`, `load15`, `used_memory`, `last_updated` FROM `resources` WHERE `group`='mslab' ORDER BY `order`"))) {
+		if (!($stmt = $conn->prepare("SELECT `host`, `cpu_cores`, `memory`, `load1`, `load5`, `load15`, `used_memory`, `last_updated` FROM `resources` ORDER BY `ordering`"))) {
 			throw new Exception("stmt error");
 		}
 		$stmt->execute();
