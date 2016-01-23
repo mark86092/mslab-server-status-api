@@ -37,8 +37,16 @@ class MachineController extends Controller
         return view('admin.machines.edit', ['machine' => $machine]);
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
+        $machine = \App\Machine::findOrFail($id);
+        $machine->hostname = $request->hostname;
+        $machine->cpus = $request->cpus;
+        $machine->memory = $request->memory;
+
+        $machine->save();
+
+        return redirect()->action('Admin\MachineController@index');
     }
 
     public function destroy($id)
