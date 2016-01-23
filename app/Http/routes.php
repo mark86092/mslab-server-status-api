@@ -37,9 +37,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('password/reset', 'Auth\PasswordController@reset');
 
     Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function () {
-        Route::get('/', function () {
-            return view('admin.index');
-        });
+        Route::get('/', 'AdminController@index');
+        Route::patch('/', 'AdminController@updateProfile');
 
         Route::get('machines', 'MachineController@index');
         Route::get('machines/{machine}/edit', 'MachineController@edit');
