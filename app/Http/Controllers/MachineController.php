@@ -9,7 +9,7 @@ class MachineController extends Controller
 {
     public function index()
     {
-        return Machine::all();
+        return Machine::orderBy('hostname', 'asc')->get();
     }
 
     public function update(Request $request)
