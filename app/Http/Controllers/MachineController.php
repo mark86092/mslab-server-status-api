@@ -8,8 +8,8 @@ use App\Machine;
 class MachineController extends Controller
 {
     public function index()
-    {
-        return Machine::orderBy('hostname', 'asc')->get();
+	{
+        return response(Machine::orderBy('hostname', 'asc')->get())->header('Access-Control-Allow-Origin', '*');
     }
 
     public function update(Request $request)
