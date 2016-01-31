@@ -21,6 +21,7 @@ class MachineController extends Controller
     public function store(Request $request)
     {
         $machine = new \App\Machine();
+        $machine->group = $request->group;
         $machine->hostname = $request->hostname;
         $machine->cpus = $request->cpus;
         $machine->memory = $request->memory;
@@ -40,6 +41,7 @@ class MachineController extends Controller
     public function update(Request $request, $id)
     {
         $machine = \App\Machine::findOrFail($id);
+        $machine->group = $request->group;
         $machine->hostname = $request->hostname;
         $machine->cpus = $request->cpus;
         $machine->memory = $request->memory;

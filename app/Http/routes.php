@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('api/machines', 'MachineController@index');
+Route::get('api/machines/{group?}', 'MachineController@index');
 Route::patch('api/machines', 'MachineController@update');
 
 /*

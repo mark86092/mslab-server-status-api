@@ -6,10 +6,10 @@
 		<thead>
 			<tr>
 				<th>ID</th>
+				<th>Group</th>
 				<th>Hostname</th>
 				<th>CPUs</th>
 				<th>Memory</th>
-				<th>Last Update</th>
 				<th>Update token (token)</th>
 				<th></th>
 			</tr>
@@ -18,10 +18,10 @@
 			@foreach ($machines as $machine)
 			<tr>
 				<td>{{ $machine->id }}</td>
+				<td>{{ $machine->group }}</td>
 				<td>{{ $machine->hostname }}</td>
-				<td>{{ $machine->cpus }}</td>
-				<td>{{ $machine->memory }}</td>
-				<td>{{ $machine->updated_at }}</td>
+				<td style="width: 100px;">{{ $machine->cpus }}</td>
+				<td style="width: 150px;">{{ $machine->memory }}</td>
 				<td>
 @foreach ($machine->scopes as $scope)
 <code>{{ $scope->token }}</code>
@@ -43,10 +43,10 @@
 			<form action="{{ action('Admin\MachineController@store') }}" method="POST">
 			<tr>
 				<td></td>
+				<td><input type="text" class="form-control" name="group"></td>
 				<td><input type="text" class="form-control" required name="hostname"></td>
 				<td><input type="number" class="form-control" min="0" name="cpus"></td>
 				<td><input type="number" class="form-control" min="0" name="memory"></td>
-				<td></td>
 				<td></td>
 				<td>{{ csrf_field() }}<button type="submit" class="btn btn-default btn-sm">Create</button></td>
 			</tr>
