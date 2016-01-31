@@ -7,16 +7,16 @@ use App\Machine;
 
 class MachineController extends Controller
 {
-    public function index()
-	{
-        return response(Machine::orderBy('hostname', 'asc')->get())->header('Access-Control-Allow-Origin', '*');
+    public function index($group = 'mslab')
+    {
+        return response(Machine::where('group', $group)->orderBy('hostname', 'asc')->get())->header('Access-Control-Allow-Origin', '*');
     }
 
     public function update(Request $request)
     {
         $token = $request->token;
 
-		$scope = \App\Scope::where('token', $token)->first();
+        $scope = \App\Scope::where('token', $token)->first();
 
         if (!$scope) {
             return response()->json([

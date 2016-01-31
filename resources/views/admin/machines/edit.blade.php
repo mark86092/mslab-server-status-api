@@ -10,6 +10,12 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label class="col-sm-2 control-label">Group</label>
+			<div class="col-sm-3">
+				<input type="text" class="form-control" name="group" value="{{ $machine->group }}" required>
+			</div>
+		</div>
+		<div class="form-group">
 			<label class="col-sm-2 control-label">Hostname</label>
 			<div class="col-sm-3">
 				<input type="text" class="form-control" name="hostname" value="{{ $machine->hostname }}" required>
