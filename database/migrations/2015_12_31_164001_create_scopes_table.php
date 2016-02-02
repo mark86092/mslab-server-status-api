@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateScopesTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreateScopesTable extends Migration
         Schema::create('scopes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('token')->unique();
-            $table->integer('machine_id')->unsigned();;
+            $table->integer('machine_id')->unsigned();
             $table->timestamps();
         });
     }
