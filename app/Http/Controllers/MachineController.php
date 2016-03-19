@@ -9,7 +9,7 @@ class MachineController extends Controller
 {
     public function index($group = 'mslab')
     {
-        return response(Machine::where('group', $group)->orderBy('hostname', 'asc')->get())->header('Access-Control-Allow-Origin', '*');
+        return response(Machine::where('group', $group)->orderBy('ordering', 'asc')->get())->header('Access-Control-Allow-Origin', '*');
     }
 
     public function update(Request $request)

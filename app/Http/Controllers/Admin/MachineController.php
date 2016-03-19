@@ -9,7 +9,7 @@ class MachineController extends Controller
 {
     public function index()
     {
-        $machines = \App\Machine::with('scopes')->get();
+        $machines = \App\Machine::with('scopes')->orderBy('group', 'asc')->orderBy('ordering', 'asc')->get();
 
         return view('admin.machines.index', ['machines' => $machines]);
     }
@@ -25,6 +25,7 @@ class MachineController extends Controller
         $machine->hostname = $request->hostname;
         $machine->cpus = $request->cpus;
         $machine->memory = $request->memory;
+        $machine->ordering = 99999;
 
         $machine->save();
 
@@ -45,6 +46,7 @@ class MachineController extends Controller
         $machine->hostname = $request->hostname;
         $machine->cpus = $request->cpus;
         $machine->memory = $request->memory;
+        $machine->ordering = $request->ordering;
 
         $machine->save();
 

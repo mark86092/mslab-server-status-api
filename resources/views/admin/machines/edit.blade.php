@@ -34,6 +34,12 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label class="col-sm-2 control-label">Ordering</label>
+			<div class="col-sm-3">
+				<input type="number" class="form-control" name="ordering" value="{{ $machine->ordering }}">
+			</div>
+		</div>
+		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				{{ csrf_field() }}
 				<input type="hidden" name="_method" value="PATCH">
